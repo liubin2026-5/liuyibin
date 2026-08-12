@@ -1,0 +1,277 @@
+{
+  "ai": {
+    "provider": "deepseek",
+    "model": "deepseek-chat",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "temperature": 0.3,
+    "max_tokens": 4096,
+    "throttle_sec": 0,
+    "analysis_concurrency": 4,
+    "enrichment_concurrency": 2,
+    "languages": [
+      "zh"
+    ]
+  },
+  "processing": {
+    "profiles_dir": "profiles",
+    "default_profile": "digital-economy",
+    "profile_settings": {
+      "digital-economy": {
+        "threshold": 6.5,
+        "topic_dedup": true
+      },
+      "tech-news": {
+        "threshold": 6.5,
+        "topic_dedup": true
+      },
+      "ai-creator": {
+        "threshold": 6.0,
+        "topic_dedup": true
+      },
+      "finance-news": {
+        "threshold": 7.0,
+        "topic_dedup": true
+      }
+    }
+  },
+  "display": {
+    "icon_style": "emoji"
+  },
+  "email": {
+    "enabled": false,
+    "smtp_server": "smtp.qq.com",
+    "smtp_port": 465,
+    "imap_server": "imap.qq.com",
+    "imap_port": 993,
+    "email_address": "xxx@qq.com",
+    "sender_name": "Horizon Daily",
+    "subscribe_keyword": "SUBSCRIBE",
+    "unsubscribe_keyword": "UNSUBSCRIBE"
+  },
+  "sources": {
+    "hackernews": {
+      "enabled": true,
+      "fetch_top_stories": 20,
+      "min_score": 100,
+      "profile": "tech-news"
+    },
+    "rss": [
+      {
+        "name": "白鲸出海（跨境电商）",
+        "url": "https://www.baijingapp.com/feed",
+        "enabled": true,
+        "category": "ecommerce",
+        "profile": "digital-economy",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "创业邦",
+        "url": "https://www.cyzone.cn/rss/",
+        "enabled": true,
+        "category": "startup",
+        "profile": "digital-economy",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "钛媒体",
+        "url": "https://www.tmtpost.com/rss",
+        "enabled": true,
+        "category": "business",
+        "profile": "digital-economy",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "雷锋网",
+        "url": "https://www.leiphone.com/feed",
+        "enabled": true,
+        "category": "ai",
+        "profile": "tech-news",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "少数派",
+        "url": "https://sspai.com/feed",
+        "enabled": true,
+        "category": "digital-tools",
+        "profile": "tech-news"
+      },
+      {
+        "name": "IT之家",
+        "url": "https://www.ithome.com/rss/",
+        "enabled": true,
+        "category": "tech",
+        "profile": "tech-news"
+      },
+      {
+        "name": "爱范儿",
+        "url": "https://www.ifanr.com/feed",
+        "enabled": true,
+        "category": "tech",
+        "profile": "tech-news"
+      },
+      {
+        "name": "Simon Willison",
+        "url": "https://simonwillison.net/atom/everything/",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": "ai-creator"
+      },
+      {
+        "name": "OpenAI Blog",
+        "url": "https://openai.com/blog/rss.xml",
+        "enabled": true,
+        "category": "ai",
+        "profile": "ai-creator"
+      },
+      {
+        "name": "Product Hunt",
+        "url": "https://www.producthunt.com/feed",
+        "enabled": true,
+        "category": "startup",
+        "profile": "digital-economy"
+      }
+    ],
+    "reddit": {
+      "enabled": false,
+      "subreddits": [
+        {
+          "subreddit": "ecommerce",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 10,
+          "profile": "digital-economy"
+        },
+        {
+          "subreddit": "Economics",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 100,
+          "profile": "digital-economy"
+        },
+        {
+          "subreddit": "Entrepreneur",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 20,
+          "profile": "digital-economy"
+        },
+        {
+          "subreddit": "SideProject",
+          "enabled": true,
+          "sort": "new",
+          "time_filter": "day",
+          "fetch_limit": 10,
+          "min_score": 0,
+          "profile": "digital-economy"
+        },
+        {
+          "subreddit": "MachineLearning",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 100,
+          "profile": "tech-news"
+        }
+      ],
+      "users": [],
+      "fetch_comments": 5
+    },
+    "twitter": {
+      "enabled": false,
+      "users": [],
+      "fetch_limit": 10,
+      "fetch_reply_text": false,
+      "max_replies_per_tweet": 3,
+      "max_tweets_to_expand": 10,
+      "reply_min_likes": 5,
+      "profile": "tech-news"
+    },
+    "telegram": {
+      "enabled": false,
+      "channels": [
+        {
+          "channel": "zaihuapd",
+          "enabled": true,
+          "fetch_limit": 20,
+          "profile": [
+            "tech-news",
+            "digital-economy"
+          ]
+        }
+      ]
+    },
+    "gdelt": {
+      "enabled": true,
+      "query": "数字经济 OR 跨境电商 OR 数字贸易 OR e-commerce OR digital economy",
+      "mode": "ArtList",
+      "max_records": 75,
+      "timespan": null,
+      "language": null,
+      "country": null,
+      "category": "digital-economy",
+      "profile": "digital-economy"
+    },
+    "openbb": {
+      "enabled": false,
+      "fetch_filings": false,
+      "filings_provider": "sec",
+      "watchlists": []
+    }
+  },
+  "collection": {
+    "time_window_hours": 24
+  },
+  "digest": {
+    "max_items": 20,
+    "profile_order": [
+      "digital-economy",
+      "tech-news",
+      "ai-creator"
+    ],
+    "category_groups": {
+      "digital-economy": {
+        "limit": 8,
+        "categories": [
+          "ecommerce",
+          "business",
+          "startup",
+          "economics"
+        ]
+      },
+      "ai": {
+        "limit": 4,
+        "categories": [
+          "ai",
+          "ai-tools"
+        ]
+      },
+      "tech": {
+        "limit": 4,
+        "categories": [
+          "tech",
+          "digital-tools",
+          "devtools"
+        ]
+      }
+    },
+    "default_group": "other",
+    "default_group_limit": 3
+  },
+  "webhook": {
+    "enabled": false,
+    "url_env": "HORIZON_WEBHOOK_URL",
+    "delivery": "summary",
+    "overview_position": "first",
+    "platform": "generic",
+    "layout": "markdown",
+    "fallback_layout": "markdown",
+    "languages": null
+  }
+}
