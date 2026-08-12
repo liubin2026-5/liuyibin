@@ -1,4 +1,4 @@
-{
+﻿{
   "ai": {
     "provider": "deepseek",
     "model": "deepseek-chat",
@@ -270,7 +270,7 @@
     "delivery": "summary",
     "overview_position": "first",
     "platform": "feishu",
-    "layout": "markdown",
+    "layout": "collapsible",
     "fallback_layout": "markdown",
     "languages": null
   }
